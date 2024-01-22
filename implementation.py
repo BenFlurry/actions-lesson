@@ -41,7 +41,10 @@ class TreeImplementation(Tree):
         in the tree, or a ValueError if the removal would result in an empty
         tree.
         """
-        self._removeHelper(value, self)
+        if self.value == value:
+            raise ValueError
+        else:
+            self._removeHelper(value, self)
 
     def _removeHelper(self, value, tree):
         if tree is None:

@@ -27,6 +27,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Auto-Formatter
+        uses: mezgoodle/auto-formatter@v1.0.10
+            
       - uses: actions/checkout@v4
 
       - name: Setup Dependency Cache

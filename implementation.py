@@ -2,7 +2,6 @@ from tree import Tree
 
 
 class TreeImplementation(Tree):
-    
     # Insert a value into the tree. Does nothing if the value is already in the tree.
     def insert(self, value: int) -> None:
         if self.value:
@@ -15,10 +14,10 @@ class TreeImplementation(Tree):
                 if self.right is None:
                     self.right = TreeImplementation(value)
                 else:
-                    self.right.insert(value)     
+                    self.right.insert(value)
         else:
             self.value = value
-    
+
     # Check if the tree contains a value.
     def contains(self, value: int) -> bool:
         if value < self.value:
@@ -37,7 +36,7 @@ class TreeImplementation(Tree):
     def remove(self, value: int) -> None:
         # if self.value is None:
         #     raise ValueError("Tree is empty")
-        
+
         # if value < self.value:
         #     if self.left is None:
         #         raise KeyError("Value not in tree")
@@ -53,15 +52,14 @@ class TreeImplementation(Tree):
         if self.left is None:
             return self.value
         return self.left.min_value()
-    
+
     # Return the maximum value in the tree.
     def max_value(self) -> int:
         if self.right is None:
             return self.value
         return self.right.max_value()
 
-
-    # Return the inorder traversal (left, root, right) of the tree as a list. 
+    # Return the inorder traversal (left, root, right) of the tree as a list.
     def inorder_traversal(self) -> list[int]:
         result = []
         if self.left is not None:

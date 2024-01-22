@@ -93,4 +93,4 @@ class TreeImplementation(Tree):
             right = self.inorder_traversal(self.right)
 
 
-        return left.append(mid) + right 
+        return left + mid + right 

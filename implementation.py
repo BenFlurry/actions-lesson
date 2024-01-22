@@ -88,9 +88,9 @@ class TreeImplementation(Tree):
         right = []
         
         if self.left is not None:
-            left = self.inorder_traversal(self.left)
+            left = self.left.inorder_traversal()
         if right is not None:
-            right = self.inorder_traversal(self.right)
+            right = self.right.inorder_traversal()
 
 
         return left + mid + right 

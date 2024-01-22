@@ -42,6 +42,7 @@ class TreeImplementation(Tree):
         in the tree, or a ValueError if the removal would result in an empty
         tree.
         """
+        no
         pass
 
     def min_value(self) -> int:

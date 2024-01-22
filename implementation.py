@@ -11,12 +11,12 @@ class TreeImplementation(Tree):
             if self.left == None:
                 self.left = Tree(value)
             else:
-                self.insert(self.left, value)
+                self.left.insert(value)
         else:
             if self.right == None:
                 self.right = Tree(value)
             else:
-                self.insert(self.right, value)
+                self.right.insert(value)
 
     def contains(self, value: int) -> bool:
         """
@@ -27,11 +27,11 @@ class TreeImplementation(Tree):
         elif value > self.value:
             if self.right == None:
                 return False
-            return self.contains(self.right, value)
+            return self.right.contains(value)
         else:
             if self.left == None:
                 return False
-            return self.contains(self.left, value)  
+            return self.right.contains(value)  
 
     def remove(self, value: int) -> None:
         """
@@ -87,9 +87,9 @@ class TreeImplementation(Tree):
         mid = [self.value]
         right = []
         
-        if self.left != None:
+        if self.left is not None:
             left = self.inorder_traversal(self.left)
-        if right != None:
+        if right is not None:
             right = self.inorder_traversal(self.right)
 
 

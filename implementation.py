@@ -41,7 +41,7 @@ class TreeImplementation(Tree):
         in the tree, or a ValueError if the removal would result in an empty
         tree.
         """
-        if self.value == value and self.right == None and self.right == None:
+        if self.value == value and self.right is None and self.right is None:
             raise ValueError
         else:
             self._removeHelper(value, self)

@@ -1,5 +1,6 @@
 from tree import Tree
 
+
 class TreeImplementation(Tree):
     def insert(self, value: int) -> None:
         """
@@ -40,8 +41,26 @@ class TreeImplementation(Tree):
         in the tree, or a ValueError if the removal would result in an empty
         tree.
         """
-        no
-        pass
+        self._removeHelper(value, self)
+
+    def _removeHelper(self, value, tree):
+        if tree is None:
+            raise KeyError("Value not in tree")
+        elif value < tree.value:
+            tree.left = self._removeHelper(value, tree.left)
+        elif value > tree.value:
+            tree.right = self._removeHelper(value, tree.right)
+        else:
+            if tree.left is None and tree.right is None:
+                return None
+            elif tree.left is None:
+                return tree.right
+            elif tree.right is None:
+                return tree.left
+            else:
+                tree.value = tree.right.min_value()
+                tree.right = self._removeHelper(tree.value, tree.right)
+        return tree
 
     def min_value(self) -> int:
         """
@@ -51,7 +70,6 @@ class TreeImplementation(Tree):
             return self.value
         else:
             return self.left.min_value()
-        
 
     def max_value(self) -> int:
         """

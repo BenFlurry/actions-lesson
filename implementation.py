@@ -11,7 +11,7 @@ class TreeImplementation(Tree):
                 self.left = TreeImplementation(value)
             else:
                 self.left.insert(value)
-        else:
+        elif value > self.value:
             if self.right is None:
                 self.right = TreeImplementation(value)
             else:

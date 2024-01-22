@@ -7,13 +7,34 @@ class TreeImplementation(Tree):
         Insert a value into the tree. Does nothing if the value is already in
         the tree.
         """
-        pass
+        if value <= self.value:
+            if self.left is None:
+                self.left = TreeImplementation(value)
+            else:
+                self.left.insert(value)
+        else:
+            if self.right is None:
+                self.right = TreeImplementation(value)
+            else:
+                self.right.insert(value)
+        
 
     def contains(self, value: int) -> bool:
         """
         Check if the tree contains a value.
         """
-        return False
+        if value == self.value:
+            return True
+        elif value < self.value:
+            if self.left is None:
+                return False
+            else:
+                return self.left.contains(value)
+        else:
+            if self.right is None:
+                return False
+            else:
+                return self.right.contains(value)
 
     def remove(self, value: int) -> None:
         """
@@ -27,16 +48,33 @@ class TreeImplementation(Tree):
         """
         Return the minimum value in the tree.
         """
-        return 0
+        if self.left is None:
+            return self.value
+        else:
+            return self.left.min_value()
+        
 
     def max_value(self) -> int:
         """
         Return the maximum value in the tree.
         """
-        return 0
+        if self.right is None:
+            return self.value
+        else:
+            return self.right.min_value()
 
     def inorder_traversal(self) -> list[int]:
         """
         Return the inorder traversal (left, root, right) of the tree as a list.
         """
-        return []
+        if self.left is None:
+            left = []
+        else:
+            left = self.left.inorder_traversal()
+
+        if self.right is None:
+            right = []
+        else:
+            right = self.right.inorder_traversal()
+
+        return left + [self.value] + right

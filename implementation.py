@@ -22,7 +22,6 @@ class TreeImplementation(Tree):
                     self.root.right.insert(value)
             else:
                 self.root.value = value
-        #pass
 
     def contains(self, value: int) -> bool:
         """

@@ -36,6 +36,8 @@ class TreeImplementation(Tree):
     def remove(self, value: int) -> None:
         if self.value is None:
             raise ValueError("Tree is empty")
+        elif self.left is None and self.right is None and self.value == value:
+            raise ValueError("Removal would result in an empty tree")
         else:
             self.remove_helper(value)
 

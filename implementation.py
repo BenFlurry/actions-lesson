@@ -8,12 +8,12 @@ class TreeImplementation(Tree):
         the tree.
         """
         if value < self.value:
-            if self.left == None:
+            if self.left is None:
                 self.left = Tree(value)
             else:
                 self.left.insert(value)
         else:
-            if self.right == None:
+            if self.right is None:
                 self.right = Tree(value)
             else:
                 self.right.insert(value)
@@ -25,11 +25,11 @@ class TreeImplementation(Tree):
         if value == self.value:
             return True
         elif value > self.value:
-            if self.right == None:
+            if self.right is None:
                 return False
             return self.right.contains(value)
         else:
-            if self.left == None:
+            if self.left is None:
                 return False
             return self.right.contains(value)  
 
@@ -40,13 +40,13 @@ class TreeImplementation(Tree):
         tree.
         """
         if value == self.value:
-            if self.left == None and self.right == None:
+            if self.left is None and self.right is None:
                 raise ValueError("Cannot remove root from tree with no children")
-            elif self.left == None:
+            elif self.left is None:
                 self.value = self.right.value
                 self.left = self.right.left
                 self.right = self.right.right
-            elif self.right == None:
+            elif self.right is None:
                 self.value = self.left.value
                 self.right = self.left.right
                 self.left = self.left.left
@@ -54,11 +54,11 @@ class TreeImplementation(Tree):
                 self.value = self.left.max_value()
                 self.left.remove(self.value)
         elif value > self.value:
-            if self.right == None:
+            if self.right is None:
                 raise KeyError("Value not in tree")
             self.right.remove(value)
         else:
-            if self.left == None:
+            if self.left is None:
                 raise KeyError("Value not in tree")
             self.left.remove(value)
 
@@ -66,7 +66,7 @@ class TreeImplementation(Tree):
         """
         Return the minimum value in the tree.
         """
-        if self.left == None:
+        if self.left is None:
             return self.value
         return self.left.min_value()
     
@@ -74,7 +74,7 @@ class TreeImplementation(Tree):
         """
         Return the maximum value in the tree.
         """
-        if self.right == None:
+        if self.right is None:
             return self.value
         return self.right.max_value()
 

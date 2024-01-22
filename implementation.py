@@ -79,7 +79,7 @@ class TreeImplementation(Tree):
             return self.value
         else:
             return self.right.min_value()
-        # s
+        # ss
     def inorder_traversal(self) -> list[int]:
         """
         Return the inorder traversal (left, root, right) of the tree as a list.

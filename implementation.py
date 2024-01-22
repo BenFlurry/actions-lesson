@@ -34,21 +34,21 @@ class TreeImplementation(Tree):
     #  Remove a value from the tree. Raises a KeyError if the value is not
     #  in the tree, or a ValueError if the removal would result in an empty tree.
     def remove(self, value: int) -> None:
-        self.only_one()
+        if self.value is None:
+            raise ValueError("Tree is empty")
+        else:
+            self.remove_helper(value)
 
+    # Checks if there is only one thing in the tree and then raises a ValueError
+    def remove_helper(self, value: int) -> None:
         if value < self.value:
             if self.left is None:
                 raise KeyError("Value not in tree")
-            self.left = self.left.remove(value)
+            self.left = self.left.remove_helper(value)
         elif value > self.value:
             if self.right is None:
                 raise KeyError("Value not in tree")
-            self.right = self.right.remove(value)
-
-    # Checks if there is only one thing in the tree and then raises a ValueError
-    def only_one(self) -> None:
-        if self.left is None and self.right is None:
-            raise ValueError("Cannot remove last value in tree")
+            self.right = self.right.remove_helper(value)
 
     # Return the minimum value in the tree.
     def min_value(self) -> int:

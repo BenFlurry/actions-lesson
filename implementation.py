@@ -40,15 +40,28 @@ class TreeImplementation(Tree):
             self.remove_helper(value)
 
     # Checks if there is only one thing in the tree and then raises a ValueError
-    def remove_helper(self, value: int) -> None:
-        if value < self.value:
-            if self.left is None:
-                raise KeyError("Value not in tree")
-            self.left = self.left.remove_helper(value)
-        elif value > self.value:
-            if self.right is None:
-                raise KeyError("Value not in tree")
-            self.right = self.right.remove_helper(value)
+
+
+def remove_helper(self, value: int):
+    if value < self.value:
+        if self.left is None:
+            raise KeyError("Value not in tree")
+        self.left = self.left.remove_helper(value)
+    elif value > self.value:
+        if self.right is None:
+            raise KeyError("Value not in tree")
+        self.right = self.right.remove_helper(value)
+    else:  # value is equal to self.value
+        if self.left is None and self.right is None:
+            return None
+        elif self.left is None:
+            return self.right
+        elif self.right is None:
+            return self.left
+        else:
+            self.value = self.right.min_value()
+            self.right = self.right.remove_helper(self.value)
+    return self
 
     # Return the minimum value in the tree.
     def min_value(self) -> int:

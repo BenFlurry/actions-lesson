@@ -1,13 +1,12 @@
 from tree import Tree
 
-
 class TreeImplementation(Tree):
     def insert(self, value: int) -> None:
         """
         Insert a value into the tree. Does nothing if the value is already in
         the tree.
         """
-        if value <= self.value:
+        if value < self.value:
             if self.left is None:
                 self.left = TreeImplementation(value)
             else:
@@ -17,7 +16,6 @@ class TreeImplementation(Tree):
                 self.right = TreeImplementation(value)
             else:
                 self.right.insert(value)
-        
 
     def contains(self, value: int) -> bool:
         """

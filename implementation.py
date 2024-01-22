@@ -45,9 +45,6 @@ class TreeImplementation(Tree):
         no
         pass
 
-
-
-
     def min_value(self) -> int:
         """
         Return the minimum value in the tree.

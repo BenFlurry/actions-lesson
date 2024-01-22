@@ -7,13 +7,44 @@ class TreeImplementation(Tree):
         Insert a value into the tree. Does nothing if the value is already in
         the tree.
         """
+        if self.root is None:
+            self.root = self.value(value)
+        else:
+            if value < self.root.value:
+                if self.root.left is None:
+                    self.root.left = self.value(value)
+                else:
+                    self.root.left.insert(value)
+            elif value > self.root.value:
+                if self.root.right is None:
+                    self.root.right = self.value(value)
+                else:
+                    self.root.right.insert(value)
+            else:
+                self.root.value = value
         pass
 
     def contains(self, value: int) -> bool:
         """
         Check if the tree contains a value.
         """
-        return False
+        if value == None:
+            return False
+        else:
+            if value == self.root.value:
+                return True
+            elif value < self.root.value:
+                if self.root.left is None:
+                    return False
+                else:
+                    return self.root.left.contains(value)
+            elif value > self.root.value:
+                if self.root.right is None:
+                    return False
+                else:
+                    return self.root.right.contains(value)
+            else:
+                return False
 
     def remove(self, value: int) -> None:
         """

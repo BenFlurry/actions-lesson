@@ -51,22 +51,44 @@ class TreeImplementation(Tree):
         in the tree, or a ValueError if the removal would result in an empty
         tree.
         """
+
         pass
 
     def min_value(self) -> int:
         """
         Return the minimum value in the tree.
         """
-        return 0
+        if self.root is None:
+            return None
+        else:
+            if self.root.left is None:
+                return self.root.value
+            else:
+                return self.root.left.min_value()
 
     def max_value(self) -> int:
         """
         Return the maximum value in the tree.
         """
-        return 0
+        if self.root is None:
+            return None
+        else:
+            if self.root.right is None:
+                return self.root.value
+            else:
+                return self.root.right.max_value()
 
     def inorder_traversal(self) -> list[int]:
         """
         Return the inorder traversal (left, root, right) of the tree as a list.
         """
-        return []
+        list = []
+        if self.root is None:
+            return []
+        else:
+            if self.root.left is not None:
+                list += self.root.left.inorder_traversal()
+            list.append(self.root.value)
+            if self.root.right is not None:
+                list += self.root.right.inorder_traversal()
+            return list

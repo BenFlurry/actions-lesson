@@ -78,7 +78,7 @@ class TreeImplementation(Tree):
         if self.right is None:
             return self.value
         else:
-            return self.right.min_value()
+            return self.right.max_value()
 
     def inorder_traversal(self) -> list[int]:
         """
